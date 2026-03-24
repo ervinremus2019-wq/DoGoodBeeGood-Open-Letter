@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "ervinremus2019-wq"
+    assignees:
+      - "ervinremus2019-wq"
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "ervinremus2019-wq"
+    assignees:
+      - "ervinremus2019-wq"
+    labels:
+      - "dependencies"
