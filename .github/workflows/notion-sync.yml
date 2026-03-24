@@ -1,0 +1,43 @@
+name: Sync GitHub Events to Notion
+on:
+  issues:
+    types: [opened, edited, closed, labeled]
+  pull_request:
+    types: [opened, edited, closed, reviewed, labeled]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync issue/PR to Notion
+        uses: NotionAPI/notion-action@v1
+        with:
+          notion_token: ${{ secrets.NOTION_TOKEN }}
+          database_id: "YOUR_NOTION_DATABASE_ID"
+          page_title: "${{ github.event.issue.title || github.event.pull_request.title }}"
+          properties: |
+            {
+              "Type": "${{ github.event_name }}",
+              "Status": "${{ github.event.action }}",
+              "ID": "${{ github.event.issue.number || github.event.pull_request.number }}",
+              "Author": "${{ github.event.issue.user.login || github.event.pull_request.user.login }}",
+              "Repository": "DoGoodBeeGood-Open-Letter",
+              "Link": "${{ github.event.issue.html_url || github.event.pull_request.html_url }}",
+              "Timestamp": "${{ steps.current-time.outputs.formattedTime }}"
+            }
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log sync to Notion
+        uses: NotionAPI/notion-action@v1
+        with:
+          notion_token: ${{ secrets.NOTION_TOKEN }}
+          database_id: "YOUR_NOTION_DATABASE_ID"
+          page_title: "Sync Log: ${{ github.event_name }} #${{ github.event.issue.number || github.event.pull_request.number }}"
+          properties: |
+            {
+              "Event": "${{ github.event_name }}",
+              "Action": "${{ github.event.action }}",
+              "ID": "${{ github.event.issue.number || github.event.pull_request.number }}",
+              "Status": "Synced",
+              "Timestamp": "${{ steps.current-time.outputs.formattedTime }}"
+            }
