@@ -1,0 +1,9 @@
+# Code Owners for DoGoodBeeGood-Open-Letter
+# Only the repository owner can approve changes to these files.
+
+* @ervinremus2019-wq
+
+# Critical files require explicit review by the owner
+SECURITY.md @ervinremus2019-wq
+index.html @ervinremus2019-wq
+README.md @ervinremus2019-wq
