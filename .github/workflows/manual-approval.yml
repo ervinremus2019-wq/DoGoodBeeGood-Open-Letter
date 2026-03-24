@@ -1,0 +1,41 @@
+name: Manual Approval for Critical Changes
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    paths:
+      - 'SECURITY.md'
+      - 'index.html'
+      - 'README.md'
+      - '.github/workflows/*'
+
+jobs:
+  request-approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request manual approval
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.token }}
+          approvers: ervinremus2019-wq
+          issue-number: ${{ github.event.pull_request.number }}
+          minimum-approvals: 1
+          exclude-authors: true
+          approval-message: "✅ Approved by owner. Proceeding with merge."
+          reject-message: "❌ Rejected by owner. Closing PR."
+      - name: Log approval request to Notion
+        uses: NotionAPI/notion-action@v1
+        with:
+          notion_token: ${{ secrets.NOTION_TOKEN }}
+          database_id: "YOUR_NOTION_DATABASE_ID"
+          page_title: "Approval Request: PR #${{ github.event.pull_request.number }}"
+          properties: |
+            {
+              "Status": "Pending",
+              "PR": "${{ github.event.pull_request.number }}",
+              "Title": "${{ github.event.pull_request.title }}",
+              "Author": "${{ github.event.pull_request.user.login }}",
+              "Repository": "DoGoodBeeGood-Open-Letter",
+              "Timestamp": "${{ steps.current-time.outputs.formattedTime }}"
+            }
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
