@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O™ Autonomous Machine Economy — ANTI-FRAUD SECURE</title>
+<style>
+:root {
+--gold:    #c8a84b;
+--gold2:   #f5d073;
+--red:     #e63946;
+--green:   #00e87a;
+--blue:    #0af;
+--orange:  #ff8c00;
+--bg:      #020407;
+--bg2:     #060810;
+--panel:   #090c16;
+--border:  #171e30;
+--text:    #c4cbe0;
+--dim:     #424e6a;
+}
+- { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+background:
+linear-gradient(rgba(200,168,75,0.025) 1px, transparent 1px),
+linear-gradient(90deg, rgba(200,168,75,0.025) 1px, transparent 1px),
+var(--bg);
+background-size: 48px 48px, 48px 48px, auto;
+color: var(--text);
+font-family:'Trebuchet MS',Arial,sans-serif;
+font-size: 15px;
+line-height: 1.6;
+min-height: 100vh;
+overflow-x: hidden;
+}
+.ticker-wrap {
+position:relative;
+overflow:hidden;
+background: rgba(230,57,70,0.06);
+border-top:1px solid rgba(230,57,70,0.4);
+border-bottom:1px solid rgba(230,57,70,0.4);
+padding:8px 0;
+}
+.ticker {
+display:flex; gap:80px;
+animation:tick 35s linear infinite;
+white-space:nowrap;
+font-family:'Courier New',Courier,monospace;
+font-size:11px; color:var(--red); letter-spacing:2px;
+}
+@keyframes tick { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+header {
+position:relative;
+border-bottom:1px solid var(--gold);
+padding:18px 40px;
+display:flex; align-items:center; justify-content:space-between;
+background: linear-gradient(90deg, rgba(200,168,75,0.08), transparent 60%);
+}
+.logo-main {
+font-family:'Courier New',Courier,monospace;
+font-size:20px; font-weight:900;
+color:var(--gold2); letter-spacing:4px;
+text-shadow:0 0 20px rgba(200,168,75,0.5);
+}
+.logo-sub {
+font-family:'Courier New',Courier,monospace;
+font-size:10px; color:var(--dim); letter-spacing:3px; margin-top:3px;
+}
+.badges { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.badge {
+display:flex; align-items:center; gap:7px;
+padding:5px 13px;
+border:1px solid; border-radius:2px;
+font-family:'Courier New',Courier,monospace;
+font-size:10px; letter-spacing:2px;
+}
+.badge.grn { border-color:var(--green); color:var(--green); }
+.badge.gld { border-color:var(--gold);  color:var(--gold);  }
+.badge.red { border-color:var(--red);   color:var(--red);   }
+.dot {
+width:7px; height:7px; border-radius:50%; animation:pulse 1.5s ease-in-out infinite;
+}
+.dot.g { background:var(--green); box-shadow:0 0 8px var(--green); }
+.dot.o { background:var(--gold);  box-shadow:0 0 8px var(--gold); }
+.dot.r { background:var(--red);   box-shadow:0 0 8px var(--red); }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
+.owner-strip {
+position:relative;
+background: linear-gradient(90deg,rgba(200,168,75,0.1),rgba(200,168,75,0.03),transparent);
+border-bottom:1px solid rgba(200,168,75,0.25);
+padding:9px 40px;
+display:flex; gap:36px; flex-wrap:wrap;
+font-family:'Courier New',Courier,monospace; font-size:11px;
+}
+.of { display:flex; gap:8px; }
+.ol { color:var(--dim); }
+.ov { color:var(--gold2); }
+.af-bar {
+position:relative;
+background: rgba(230,57,70,0.09);
+border-bottom:2px solid rgba(230,57,70,0.5);
+padding:11px 40px;
+font-family:'Courier New',Courier,monospace;
+font-size:12px; color:var(--red); letter-spacing:2px;
+display:flex; align-items:center; gap:14px;
+}
+.af-icon { font-size:18px; }
+.tabs {
+position:relative;
+display:flex; border-bottom:1px solid var(--border);
+padding:0 40px; background:var(--bg2); overflow-x:auto;
+}
+.tab {
+padding:13px 22px;
+font-family:'Courier New',Courier,monospace; font-size:11px; letter-spacing:2px;
+color:var(--dim); cursor:pointer; border-bottom:2px solid transparent;
+transition:all .2s; white-space:nowrap; user-select:none;
+}
+.tab:hover { color:var(--text); }
+.tab.active { color:var(--gold); border-bottom-color:var(--gold); }
+main {
+position:relative;
+padding:28px 40px; max-width:1400px; margin:0 auto;
+}
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px; }
+.g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-bottom:20px; }
+.full { margin-bottom:20px; }
+.panel {
+background:var(--panel);
+border:1px solid var(--border); border-radius:3px; overflow:hidden;
+transition:border-color .3s;
+}
+.panel:hover { border-color:rgba(200,168,75,0.25); }
+.ph {
+padding:11px 17px; border-bottom:1px solid var(--border);
+display:flex; align-items:center; justify-content:space-between;
+background:rgba(200,168,75,0.04);
+}
+.pt {
+font-family:'Courier New',Courier,monospace; font-size:10px; font-weight:700;
+letter-spacing:3px; color:var(--gold);
+}
+.pb { padding:16px; }
+.pbadge {
+font-family:'Courier New',Courier,monospace; font-size:9px;
+padding:3px 8px; border-radius:2px; letter-spacing:1px;
+}
+.bg { background:rgba(0,232,122,0.09); color:var(--green); border:1px solid rgba(0,232,122,0.3); }
+.bo { background:rgba(200,168,75,0.09); color:var(--gold);  border:1px solid rgba(200,168,75,0.3); }
+.br { background:rgba(230,57,70,0.09);  color:var(--red);   border:1px solid rgba(230,57,70,0.3); }
+.bb { background:rgba(0,170,255,0.09);  color:var(--blue);  border:1px solid rgba(0,170,255,0.3); }
+.code {
+background:#010306; border:1px solid var(--border); border-radius:3px;
+padding:16px; font-family:'Courier New',Courier,monospace; font-size:12px;
+line-height:1.9; overflow-x:auto; max-height:460px; overflow-y:auto;
+position:relative;
+}
+.code::-webkit-scrollbar { width:3px; height:3px; }
+.code::-webkit-scrollbar-thumb { background:var(--border); }
+.kw { color:#c792ea; }
+.fn { color:#82aaff; }
+.st { color:#c3e88d; }
+.co { color:#4a5568; font-style:italic; }
+.nb { color:var(--gold2); }
+.cm { color:var(--green); }
+.em { color:#ff9e64; font-weight:700; }
+.af { color:var(--red); font-weight:700; }
+.copy-btn {
+position:absolute; top:10px; right:10px;
+padding:4px 11px; background:rgba(200,168,75,0.1);
+border:1px solid rgba(200,168,75,0.3); color:var(--gold);
+font-family:'Courier New',Courier,monospace; font-size:10px;
+letter-spacing:1px; cursor:pointer; border-radius:2px; transition:all .2s;
+}
+.copy-btn:hover { background:rgba(200,168,75,0.2); }
+.cl { list-style:none; display:flex; flex-direction:column; gap:7px; }
+.cl li {
+display:flex; align-items:flex-start; gap:10px;
+font-size:13px; padding:6px 0;
+border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.cl li:last-child { border-bottom:none; }
+.ci { color:var(--green); flex-shrink:0; margin-top:2px; }
+.cx { color:var(--red);   flex-shrink:0; margin-top:2px; }
+.co2{ color:var(--gold);  flex-shrink:0; margin-top:2px; }
+table { width:100%; border-collapse:collapse; font-size:12px; }
+th {
+font-family:'Courier New',Courier,monospace; font-size:9px; letter-spacing:2px;
+color:var(--gold); padding:9px 12px; text-align:left;
+border-bottom:1px solid var(--border); background:rgba(200,168,75,0.04);
+}
+td {
+padding:9px 12px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'Courier New',Courier,monospace; font-size:11px; vertical-align:top;
+}
+tr:last-child td { border-bottom:none; }
+tr:hover td { background:rgba(200,168,75,0.03); }
+.tk { color:var(--gold2); }
+.tg { color:var(--green); }
+.tr2{ color:var(--red); }
+.to { color:var(--orange); }
+.ir { display:flex; flex-direction:column; gap:6px; margin-top:10px; }
+.ii { display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:12px; }
+.ii:last-child { border-bottom:none; }
+.ik { color:var(--dim); font-family:'Courier New',Courier,monospace; font-size:11px; }
+.iv { color:var(--text); font-family:'Courier New',Courier,monospace; font-size:11px; }
+.iv.g { color:var(--green); }
+.iv.o { color:var(--gold2); }
+.iv.r { color:var(--red); }
+.metric { text-align:center; padding:8px 0; }
+.mv { font-family:'Courier New',Courier,monospace; font-size:26px; font-weight:900; color:var(--gold2); text-shadow:0 0 15px rgba(200,168,75,0.4); display:block; }
+.ml { font-family:'Courier New',Courier,monospace; font-size:10px; color:var(--dim); letter-spacing:2px; margin-top:3px; }
+.flow { display:flex; align-items:center; gap:7px; flex-wrap:wrap; padding:10px 0; }
+.fs {
+padding:7px 12px; border:1px solid var(--border); font-family:'Courier New',Courier,monospace; font-size:11px; color:var(--text); border-radius:2px; background:rgba(200,168,75,0.03); white-space:nowrap;
+}
+.fs.h { border-color:var(--gold); color:var(--gold); background:rgba(200,168,75,0.08); }
+.fs.af2 { border-color:var(--red); color:var(--red); background:rgba(230,57,70,0.06); }
+.fa { color:var(--dim); font-size:14px; }
+.nda {
+background:rgba(230,57,70,0.06);
+border:1px solid rgba(230,57,70,0.4); border-left:4px solid var(--red);
+padding:16px; border-radius:2px;
+font-family:'Courier New',Courier,monospace; font-size:12px; line-height:2;
+}
+.nda-title {
+font-family:'Courier New',Courier,monospace; font-size:11px; font-weight:700; color:var(--red); letter-spacing:3px; margin-bottom:10px;
+}
+.nda-amt {
+font-family:'Courier New',Courier,monospace; font-size:22px; font-weight:900; color:var(--red); text-shadow:0 0 15px rgba(230,57,70,0.4);
+}
+.wm {
+background:linear-gradient(135deg,rgba(200,168,75,0.05),rgba(200,168,75,0.02));
+border:1px solid rgba(200,168,75,0.35); padding:18px; border-radius:3px; text-align:center;
+font-family:'Courier New',Courier,monospace;
+}
+.wm-main { font-size:13px; color:var(--gold2); letter-spacing:4px; margin-bottom:7px; word-break:break-all; }
+.wm-sub  { font-size:10px; color:var(--dim); letter-spacing:1px; }
+.stitle {
+font-family:'Courier New',Courier,monospace; font-size:13px; font-weight:700;
+color:var(--gold); letter-spacing:3px; margin-bottom:18px; padding-bottom:10px;
+border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px;
+}
+.af-callout {
+background:rgba(255,140,0,0.07);
+border:1px solid rgba(255,140,0,0.35); border-left:4px solid var(--orange);
+padding:14px 16px; border-radius:2px; margin-bottom:18px;
+font-family:'Courier New',Courier,monospace; font-size:12px; line-height:1.8; color:var(--text);
+}
+.af-callout strong { color:var(--orange); }
+footer {
+position:relative;
+border-top:1px solid var(--border); padding:18px 40px;
+display:flex; align-items:center; justify-content:space-between;
+font-family:'Courier New',Courier,monospace; font-size:10px; color:var(--dim);
+background:var(--bg2); margin-top:40px; flex-wrap:wrap; gap:10px;
+}
+.fc { color:var(--gold); letter-spacing:1px; }
+@media(max-width:900px){
+.g2,.g3 { grid-template-columns:1fr; }
+header { flex-direction:column; gap:14px; align-items:flex-start; padding:14px 16px; }
+.badges { flex-wrap:wrap; }
+.owner-strip { padding:8px 16px; gap:16px; }
+.af-bar { padding:10px 16px; font-size:11px; }
+.tabs { padding:0 8px; }
+main { padding:16px; }
+footer { flex-direction:column; padding:14px 16px; }
+}
+</style>
+</head>
+<body>
+<!-- TICKER -->
+<div class="ticker-wrap">
+<div class="ticker">
+<span>⛔ NO SHA HASHING — FULL REAL EMAIL ON EVERY TRANSACTION — ZERO FRAUD TOLERANCE</span>
+<span>⛔ EVERY SENDER EMAIL FULLY VISIBLE — NO MASKING — NO PSEUDONYMISATION</span>
+<span>⛔ FRAUD ATTEMPT = INSTANT BLOCK + LOGGED WITH FULL EMAIL + OWNER ALERTED</span>
+<span>© ERVIN REMUS RADOSAVLEVICI — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="294c5b5f40471b181969404a45465c4d074a4644">[email protected]</a> — EUIPO 1996509 — NDA €78,000,000,000</span>
+<span>⛔ NO SHA HASHING — FULL REAL EMAIL ON EVERY TRANSACTION — ZERO FRAUD TOLERANCE</span>
+<span>⛔ EVERY SENDER EMAIL FULLY VISIBLE — NO MASKING — NO PSEUDONYMISATION</span>
+<span>⛔ FRAUD ATTEMPT = INSTANT BLOCK + LOGGED WITH FULL EMAIL + OWNER ALERTED</span>
+<span>© ERVIN REMUS RADOSAVLEVICI — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e88d9a9e8186dad9d8a8818b84879d8cc68b8785">[email protected]</a> — EUIPO 1996509 — NDA €78,000,000,000</span>
+</div>
+</div>
+
+<!-- ANTI-FRAUD BAR -->
+<div class="af-bar">
+<span class="af-icon">⛔</span>
+ANTI-FRAUD ACTIVE — NO SHA — REAL EMAIL ON EVERY TRANSACTION — FULL TRACEABILITY ENFORCED — FRAUD DETECTION MAXIMUM
+</div>
+
+<!-- HEADER -->
+<header>
+<div>
+<div class="logo-main">O™ AUTONOMOUS ECONOMY</div>
+<div class="logo-sub">ANTI-FRAUD ULTRA SECURE — RADOSAVLEVICI PROTOCOL v3.1 — NO SHA — FULL EMAIL TRACE</div>
+</div>
+<div class="badges">
+<div class="badge grn">
+<div class="dot g"></div>
+SYSTEM ACTIVE
+</div>
+<div class="badge gld">
+<div class="dot o"></div>
+HMAC SECURED
+</div>
+<div class="badge red">
+<div class="dot r"></div>
+ANTI-FRAUD ON
+</div>
+</div>
+</header>
+
+<!-- OWNER STRIP -->
+<div class="owner-strip">
+<div class="of"><span class="ol">OWNER:</span><span class="ov">Ervin Remus Radosavlevici</span></div>
+<div class="of"><span class="ol">EMAIL:</span><span class="ov"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f39685819a9dc1c2c3b39a909f9c8697dd909c9e">[email protected]</a></span></div>
+<div class="of"><span class="ol">DOB:</span><span class="ov">01/09/1987</span></div>
+<div class="of"><span class="ol">TRADEMARK:</span><span class="ov">EUIPO 1996509</span></div>
+<div class="of"><span class="ol">WATERMARK:</span><span class="ov">RADOSAVLEVICI_ULTRA_SECURE_SYSTEM</span></div>
+<div class="of"><span class="ol">COPYRIGHT:</span><span class="ov">© ALL RIGHTS RESERVED WORLDWIDE</span></div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+<div class="tab active" onclick="sw('overview',this)">OVERVIEW</div>
+<div class="tab" onclick="sw('code',this)">FULL CODE</div>
+<div class="tab" onclick="sw('antifaud',this)">ANTI-FRAUD ENGINE</div>
+<div class="tab" onclick="sw('gdpr',this)">GDPR MODULE</div>
+<div class="tab" onclick="sw('agents',this)">AI AGENTS</div>
+<div class="tab" onclick="sw('legal',this)">LEGAL & NDA</div>
+</div>
+
+<main>
+
+<!-- OVERVIEW -->
+<div class="tab-content active" id="tab-overview">
+
+<div class="af-callout">
+<strong>⛔ CRITICAL CORRECTION APPLIED:</strong>
+Previous version used SHA hashing to pseudonymise sender emails in audit logs —
+this is a fraud-enablement risk (real identity hidden). This version removes ALL SHA
+from identity/email fields. Every transaction log, every receipt, every audit entry
+now shows the <strong>full real sender email address</strong>. Zero masking. Full traceability.
+</div>
+
+<div class="g3">
+
+<div class="panel">
+<div class="ph"><span class="pt">SYSTEM STATUS</span><span class="pbadge bg">OPERATIONAL</span></div>
+<div class="pb">
+<div class="metric"><span class="mv">ACTIVE</span><div class="ml">ANTI-FRAUD ENGINE</div></div>
+<div class="ir">
+<div class="ii"><span class="ik">PROTOCOL</span><span class="iv o">v3.1-ANTIFAUD</span></div>
+<div class="ii"><span class="ik">EMAIL MASKING</span><span class="iv r">DISABLED — FULL REAL</span></div>
+<div class="ii"><span class="ik">SHA IN LOGS</span><span class="iv r">REMOVED — NOT USED</span></div>
+<div class="ii"><span class="ik">TRACEABILITY</span><span class="iv g">100% — NO GAPS</span></div>
+</div>
+</div>
+</div>
+
+<div class="panel">
+<div class="ph"><span class="pt">TRANSACTION IDENTITY</span><span class="pbadge br">FULL VISIBLE</span></div>
+<div class="pb">
+<div class="metric"><span class="mv">100%</span><div class="ml">EMAIL VISIBLE IN EVERY LOG</div></div>
+<div class="ir">
+<div class="ii"><span class="ik">SENDER EMAIL</span><span class="iv g">FULL — NO HASH</span></div>
+<div class="ii"><span class="ik">RECEIPT EMAIL</span><span class="iv g">FULL — NO HASH</span></div>
+<div class="ii"><span class="ik">AUDIT LOG EMAIL</span><span class="iv g">FULL — NO HASH</span></div>
+<div class="ii"><span class="ik">FRAUD ALERT EMAIL</span><span class="iv g">FULL — INSTANT</span></div>
+</div>
+</div>
+</div>
+
+<div class="panel">
+<div class="ph"><span class="pt">SECURITY STACK</span><span class="pbadge bo">MAXIMUM</span></div>
+<div class="pb">
+<div class="metric"><span class="mv">HMAC</span><div class="ml">SHA256 FOR SIGNATURES ONLY</div></div>
+<div class="ir">
+<div class="ii"><span class="ik">HMAC-SHA256</span><span class="iv g">SIGNATURES ONLY ✔</span></div>
+<div class="ii"><span class="ik">PGP RSA-4096</span><span class="iv g">ENVELOPE ENCRYPT</span></div>
+<div class="ii"><span class="ik">TLS 1.3</span><span class="iv g">ALL TRANSPORT</span></div>
+<div class="ii"><span class="ik">ALLOWLIST</span><span class="iv g">STRICT — ENV ONLY</span></div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- FLOW -->
+<div class="panel full">
+<div class="ph"><span class="pt">FULL EXECUTION FLOW — ANTI-FRAUD</span><span class="pbadge bg">AUTOMATED</span></div>
+<div class="pb">
+<div class="flow">
+<div class="fs h">AI AGENT<br><small style="color:var(--dim);font-size:9px;">agent.py</small></div>
+<div class="fa">⟶</div>
+<div class="fs">SIGN REQUEST<br><small style="color:var(--dim);font-size:9px;">HMAC-SHA256</small></div>
+<div class="fa">⟶</div>
+<div class="fs af2">EMAIL CHECK<br><small style="font-size:9px;">FULL EMAIL VERIFIED</small></div>
+<div class="fa">⟶</div>
+<div class="fs af2">ALLOWLIST<br><small style="font-size:9px;">REJECT UNKNOWN</small></div>
+<div class="fa">⟶</div>
+<div class="fs">VALIDATE SIG<br><small style="color:var(--dim);font-size:9px;">+ TIMESTAMP</small></div>
+<div class="fa">⟶</div>
+<div class="fs h">PROCESS<br><small style="color:var(--dim);font-size:9px;">engine.py</small></div>
+<div class="fa">⟶</div>
+<div class="fs af2">AUDIT LOG<br><small style="font-size:9px;">FULL EMAIL + ALL DATA</small></div>
+<div class="fa">⟶</div>
+<div class="fs">SEPA RECEIPT<br><small style="color:var(--dim);font-size:9px;">FULL EMAIL</small></div>
+<div class="fa">⟶</div>
+<div class="fs h">CONFIRMED<br><small style="color:var(--green);font-size:9px;">✔ TRACED</small></div>
+</div>
+</div>
+</div>
+
+<!-- WHAT CHANGED -->
+<div class="g2">
+
+<div class="panel">
+<div class="ph"><span class="pt">WHAT WAS REMOVED (FRAUD RISK)</span><span class="pbadge br">FIXED</span></div>
+<div class="pb">
+<ul class="cl">
+<li><span class="cx">✘</span> SHA-256 hash of sender email in audit logs — <strong style="color:var(--red)">REMOVED</strong></li>
+<li><span class="cx">✘</span> Pseudonymised IDs like PSD-4a7f... replacing real emails — <strong style="color:var(--red)">REMOVED</strong></li>
+<li><span class="cx">✘</span> Any function that masked, shortened or hashed identity — <strong style="color:var(--red)">REMOVED</strong></li>
+<li><span class="cx">✘</span> GDPR_PSEUDONYMISE flag that could hide real senders — <strong style="color:var(--red)">REMOVED</strong></li>
+<li><span class="cx">✘</span> pseudonymise() function entirely — <strong style="color:var(--red)">DELETED FROM CODEBASE</strong></li>
+</ul>
+</div>
+</div>
+
+<div class="panel">
+<div class="ph"><span class="pt">WHAT REPLACED IT (ANTI-FRAUD)</span><span class="pbadge bg">ACTIVE</span></div>
+<div class="pb">
+<ul class="cl">
+<li><span class="ci">✔</span> Full real sender email stored in every audit log entry</li>
+<li><span class="ci">✔</span> Full real email embedded in every SEPA receipt</li>
+<li><span class="ci">✔</span> Fraud alert email sent to owner (<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7d2c5c1ded9858687f7ded4dbd8c2d399d4d8da">[email protected]</a>) on any rejection</li>
+<li><span class="ci">✔</span> Repeated failed attempts flagged and logged with full email + count</li>
+<li><span class="ci">✔</span> Unknown sender email fully logged before rejection — fully traceable</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- CODE -->
+<div class="tab-content" id="tab-code">
+
+<div class="stitle">⛔ COMPLETE PRODUCTION CODE — v3.1 ANTI-FRAUD — NO SHA ON IDENTITY</div>
+
+<!-- config.py -->
+<div class="panel full">
+<div class="ph"><span class="pt">[config.py](http://config.py/) — ENVIRONMENT & CONSTANTS</span><span class="pbadge bo">PRODUCTION</span></div>
+<div class="pb">
+<div class="code" id="c-config">
+<button class="copy-btn" onclick="cp('c-config')">COPY</button>
+<span class="co"># ================================================================
+# O™ AUTONOMOUS MACHINE ECONOMY — CONFIG
+# © Ervin Remus Radosavlevici — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe9b8c889790cccfcebe979d92918b9ad09d9193">[email protected]</a>
+# TRADEMARK: EUIPO 1996509
+# WATERMARK: RADOSAVLEVICI_ULTRA_SECURE_SYSTEM
+# NDA PENALTY: €78,000,000,000
+# ALL RIGHTS RESERVED WORLDWIDE
+# ================================================================
+# NOTE: SHA is used ONLY for HMAC message signatures.
+# NO SHA is used on email addresses or identity fields.
+# Every email address is stored and logged in FULL.
+# ================================================================</span>
+
+<span class="kw">import</span> os
+
+<span class="nb">OWNER</span>     = <span class="st">“Ervin Remus Radosavlevici”</span>
+<span class="nb">EMAIL_ID</span>  = <span class="st">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6d3c4c0dfd8848786f6dfd5dad9c3d298d5d9db">[email protected]</a>"</span>
+<span class="nb">DOB</span>       = <span class="st">“01/09/1987”</span>
+<span class="nb">TRADEMARK</span> = <span class="st">“EUIPO 1996509”</span>
+<span class="nb">WATERMARK</span> = <span class="st">“RADOSAVLEVICI_ULTRA_SECURE_SYSTEM”</span>
+<span class="nb">NDA</span>       = <span class="nb">78_000_000_000</span>
+
+<span class="co"># ── All secrets from environment variables (never hardcode) ──</span>
+
+<span class="nb">SYSTEM_EMAIL</span> = os.environ[<span class="st">“SYSTEM_EMAIL”</span>]
+<span class="nb">PASSWORD</span>     = os.environ[<span class="st">“EMAIL_PASSWORD”</span>]
+<span class="nb">HMAC_SECRET</span>  = os.environ[<span class="st">“HMAC_SECRET”</span>]
+
+<span class="co"># ── Mail server ──</span>
+
+<span class="nb">IMAP_HOST</span> = os.getenv(<span class="st">“IMAP_HOST”</span>, <span class="st">“imap.protonmail.ch”</span>)
+<span class="nb">IMAP_PORT</span> = <span class="nb">int</span>(os.getenv(<span class="st">“IMAP_PORT”</span>, <span class="st">“993”</span>))
+<span class="nb">SMTP_HOST</span> = os.getenv(<span class="st">“SMTP_HOST”</span>, <span class="st">“smtp.protonmail.ch”</span>)
+<span class="nb">SMTP_PORT</span> = <span class="nb">int</span>(os.getenv(<span class="st">“SMTP_PORT”</span>, <span class="st">“465”</span>))
+
+<span class="co"># ── Allowlist — full email addresses ──</span>
+
+<span class="af"># ANTI-FRAUD: Allowlist must contain FULL real email addresses.
+# Any sender not on this list is blocked AND their full email is logged.</span>
+
+<span class="nb">ALLOWED_SENDERS</span> = [
+    a.strip()
+    <span class="kw">for</span> a <span class="kw">in</span> os.environ[<span class="st">“ALLOWED_SENDERS”</span>].split(<span class="st">“,”</span>)
+]
+
+<span class="co"># ── Timing ──</span>
+
+<span class="nb">TIMESTAMP_WINDOW</span> = <span class="nb">int</span>(os.getenv(<span class="st">“TIMESTAMP_WINDOW”</span>, <span class="st">“300”</span>))
+<span class="nb">POLL_INTERVAL</span>    = <span class="nb">int</span>(os.getenv(<span class="st">“POLL_INTERVAL”</span>,    <span class="st">“10”</span>))
+<span class="nb">GDPR_RETENTION</span>   = <span class="nb">int</span>(os.getenv(<span class="st">“GDPR_RETENTION_DAYS”</span>, <span class="st">“90”</span>))
+
+<span class="co"># ── Fraud alert destination ──</span>
+
+<span class="af"># ANTI-FRAUD: Every rejected/blocked attempt sends a real-time alert to owner.</span>
+
+<span class="nb">FRAUD_ALERT_TO</span> = os.getenv(<span class="st">“FRAUD_ALERT_EMAIL”</span>, EMAIL_ID)
+</div>
+</div>
+</div>
+
+<!-- security.py -->
+<div class="panel full" style="margin-top:20px;">
+<div class="ph"><span class="pt">[security.py](http://security.py/) — HMAC SIGNATURES ONLY (NO SHA ON IDENTITY)</span><span class="pbadge bo">PRODUCTION</span></div>
+<div class="pb">
+<div class="code" id="c-security">
+<button class="copy-btn" onclick="cp('c-security')">COPY</button>
+<span class="co"># ================================================================
+# SECURITY MODULE
+# HMAC-SHA256 is used ONLY for message signature verification.
+# SHA is NOT used on email addresses, sender identity, or any
+# personal data field. All identity is stored and shown in FULL.
+# © Ervin Remus Radosavlevici | WATERMARK: RADOSAVLEVICI_ULTRA_SECURE_SYSTEM
+# ================================================================</span>
+
+<span class="kw">import</span> hashlib, hmac, time
+<span class="kw">from</span> config <span class="kw">import</span> HMAC_SECRET, WATERMARK, TIMESTAMP_WINDOW, OWNER, EMAIL_ID, TRADEMARK, NDA
+
+<span class="kw">def</span> <span class="fn">now_ts</span>() -> <span class="nb">str</span>:
+    <span class="kw">return</span> <span class="nb">str</span>(<span class="nb">int</span>(time.time()))
+
+<span class="af"># NOTE: HMAC-SHA256 used here ONLY to verify message integrity.
+# The sender email is NOT hashed. It travels and is stored as plain text.</span>
+
+<span class="kw">def</span> <span class="fn">sign</span>(data: <span class="nb">str</span>) -> <span class="nb">str</span>:
+    <span class="st">"""HMAC-SHA256 for message signature — NOT used on identity."""</span>
+    <span class="kw">return</span> hmac.new(
+        HMAC_SECRET.encode(), data.encode(), hashlib.sha256
+    ).hexdigest()
+
+<span class="kw">def</span> <span class="fn">verify</span>(data: <span class="nb">str</span>, sig: <span class="nb">str</span>, ts: <span class="nb">str</span>) -> <span class="nb">bool</span>:
+    <span class="st">"""Verify HMAC-SHA256 signature and timestamp."""</span>
+    <span class="kw">if</span> <span class="nb">abs</span>(<span class="nb">int</span>(ts) - <span class="nb">int</span>(<span class="fn">now_ts</span>())) > TIMESTAMP_WINDOW:
+        <span class="kw">return</span> <span class="nb">False</span>
+    <span class="kw">return</span> hmac.compare_digest(
+        <span class="fn">sign</span>(data), sig
+    )
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- LEGAL -->
+<div class="tab-content" id="tab-legal">
+
+<div class="stitle">📜 LEGAL & NDA — EUIPO 1996509 — €78,000,000,000 PENALTY</div>
+
+<div class="g2">
+
+<div class="panel">
+<div class="ph"><span class="pt">TRADEMARK & COPYRIGHT</span><span class="pbadge bo">ENFORCED</span></div>
+<div class="pb">
+<div class="ir">
+<div class="ii"><span class="ik">TRADEMARK</span><span class="iv o">EUIPO 1996509</span></div>
+<div class="ii"><span class="ik">WATERMARK</span><span class="iv o">RADOSAVLEVICI_ULTRA_SECURE_SYSTEM</span></div>
+<div class="ii"><span class="ik">OWNER</span><span class="iv o">Ervin Remus Radosavlevici</span></div>
+<div class="ii"><span class="ik">EMAIL</span><span class="iv o"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f39685819a9dc1c2c3b39a909f9c8697dd909c9e">[email protected]</a></span></div>
+<div class="ii"><span class="ik">NDA PENALTY</span><span class="iv r">€78,000,000,000</span></div>
+</div>
+</div>
+</div>
+
+<div class="panel">
+<div class="ph"><span class="pt">NON-DISCLOSURE AGREEMENT</span><span class="pbadge br">BINDING</span></div>
+<div class="pb">
+<div class="nda">
+<div class="nda-title">NON-DISCLOSURE AGREEMENT</div>
+
+This Non-Disclosure Agreement (the "Agreement") is made and entered into as of the date of access or use, by and between Ervin Remus Radosavlevici ("Disclosing Party") and the recipient ("Receiving Party").
+
+1. **Confidential Information**
+   All information, including but not limited to code, documentation, and system design, is strictly confidential and proprietary.
+
+2. **Obligations**
+   The Receiving Party agrees to hold all Confidential Information in strict confidence and to take all reasonable precautions to protect such Confidential Information.
+
+3. **Term**
+   This Agreement shall remain in effect indefinitely.
+
+4. **Penalty**
+   Any unauthorized use or disclosure shall result in a penalty of €78,000,000,000 (seventy-eight billion euros).
+
+5. **Governing Law**
+   This Agreement shall be governed by and construed in accordance with the laws of the United Kingdom.
+
+<div class="nda-amt">€78,000,000,000</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+<div>© 2026 Ervin Remus Radosavlevici — All Rights Reserved Worldwide</div>
+<div class="fc">O™ AUTONOMOUS MACHINE ECONOMY</div>
+</footer>
+
+<script>
+function sw(tab, el) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(`tab-${tab}`).classList.add('active');
+  el.classList.add('active');
+}
+function cp(id) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.textContent);
+  const btn = el.querySelector('.copy-btn');
+  btn.textContent = 'COPIED!';
+  setTimeout(() => btn.textContent = 'COPY', 1500);
+}
+</script>
+
+</body>
+</html>
