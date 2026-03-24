@@ -1,0 +1,14 @@
+name: Enforce Branch Protection
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  protect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if push is to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "::error:: Direct pushes to main are not allowed. Use a pull request."
+          exit 1
