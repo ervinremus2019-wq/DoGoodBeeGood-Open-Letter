@@ -1,0 +1,43 @@
+name: Fraud Risk Scan
+on: [pull_request, push]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for SHA hashing on identity fields
+        run: |
+          if grep -r --include="*.{js,py,md,html}" "SHA-256.*email\|pseudonymise\|hash.*identity" .; then
+            echo "❌ FRAUD RISK: SHA hashing or pseudonymisation detected on identity fields!"
+            echo "::error::Fraud risk detected. Review required."
+            exit 1
+          else
+            echo "✅ No fraud risks detected."
+          fi
+      - name: Check for unapproved sender emails
+        run: |
+          if grep -r --include="*.{js,py,md,html}" "sender.*email.*@" . | grep -v "ervinremus2019@gmail.com\|dogoodbeegood.org"; then
+            echo "❌ FRAUD RISK: Unapproved sender email detected!"
+            echo "::error::Unapproved sender email detected. Review required."
+            exit 1
+          else
+            echo "✅ Only approved sender emails found."
+          fi
+      - name: Log scan results to Notion
+        if: always()
+        uses: NotionAPI/notion-action@v1
+        with:
+          notion_token: ${{ secrets.NOTION_TOKEN }}
+          database_id: "YOUR_NOTION_DATABASE_ID"
+          page_title: "Fraud Scan: ${{ github.event_name }} ${{ github.sha }}"
+          properties: |
+            {
+              "Status": "${{ job.status }}",
+              "Repository": "DoGoodBeeGood-Open-Letter",
+              "Trigger": "${{ github.event_name }}",
+              "SHA": "${{ github.sha }}",
+              "Timestamp": "${{ steps.current-time.outputs.formattedTime }}"
+            }
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
