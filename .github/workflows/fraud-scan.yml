@@ -5,7 +5,7 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Check for SHA hashing on identity fields
         run: |
           if grep -r --include="*.{js,py,md,html}" "SHA-256.*email\|pseudonymise\|hash.*identity" .; then
